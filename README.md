@@ -5,3 +5,5 @@ The raw data is from  Johns Hopkins CSSE data [repository](https://github.com/CS
 # Visulization:
 <b>Visual Dashboard (desktop):</b><br>
 https://maps-2020.shinyapps.io/Rshiny/
+# Acknowledgement:
+Thanks [Rami Krispin](https://github.com/RamiKrispin/coronavirus) for sharing the data information. 
