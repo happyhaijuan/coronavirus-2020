@@ -7,18 +7,18 @@ library(dplyr)
 raw_conf <- read.csv(file = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/time_series/time_series_2019-ncov-Confirmed.csv",
                      stringsAsFactors = FALSE)
 
-# Transforming the data from wide to long
+# Transforming the data from wide to long, create new data frame
 df_conf <- raw_conf[, 1:4]
 for(i in 5:ncol(raw_conf)){
   print(i)
   raw_conf[,i] <- as.integer(raw_conf[,i])
   raw_conf[,i] <- ifelse(is.na(raw_conf[, i]), 0 , raw_conf[, i])
   
-  if(i == 5){
+  #if(i == 5){
     df_conf[[names(raw_conf)[i]]] <- raw_conf[, i]
-  } else {
-    df_conf[[names(raw_conf)[i]]] <- raw_conf[, i] - raw_conf[, i - 1]
-  }
+  #} else {
+   # df_conf[[names(raw_conf)[i]]] <- raw_conf[, i] - raw_conf[, i - 1]
+  #}
 }
 df_conf1 <-  df_conf %>% tidyr::pivot_longer(cols = dplyr::starts_with("X"),
                                              names_to = "date_temp",
@@ -51,11 +51,11 @@ for(i in 5:ncol(raw_death)){
   raw_death[,i] <- as.integer(raw_death[,i])
   raw_death[,i] <- ifelse(is.na(raw_death[, i]), 0 , raw_death[, i])
   
-  if(i == 5){
+  #if(i == 5){
     df_death[[names(raw_death)[i]]] <- raw_death[, i]
-  } else {
-    df_death[[names(raw_death)[i]]] <- raw_death[, i] - raw_death[, i - 1]
-  }
+  #} else {
+  #    df_death[[names(raw_death)[i]]] <- raw_death[, i] - raw_death[, i - 1]
+  #}
 }
 
 df_death1 <-  df_death %>% tidyr::pivot_longer(cols = dplyr::starts_with("X"),
@@ -94,11 +94,11 @@ for(i in 5:ncol(raw_rec)){
   raw_rec[,i] <- as.integer(raw_rec[,i])
   raw_rec[,i] <- ifelse(is.na(raw_rec[, i]), 0 , raw_rec[, i])
   
-  if(i == 5){
+ # if(i == 5){
     df_rec[[names(raw_rec)[i]]] <- raw_rec[, i]
-  } else {
-    df_rec[[names(raw_rec)[i]]] <- raw_rec[, i] - raw_rec[, i - 1]
-  }
+  #} else {
+   # df_rec[[names(raw_rec)[i]]] <- raw_rec[, i] - raw_rec[, i - 1]
+  #}
 }
 
 
