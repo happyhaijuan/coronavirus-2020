@@ -1,8 +1,9 @@
 library(dplyr)
+library(ggplot2)
 raw_data<- read.csv("/Users/haijuanzhang/Documents/coronavirus-2020/time serires data/coronavirus.csv",stringsAsFactors = FALSE)
-confirmed_df <- raw_data[(raw_data$type == 'confirmed')&(raw_data$date)=='2020-02-13',]
-death_df <- raw_data[(raw_data$type == 'death')&(raw_data$date)=='2020-02-13',]
-recoverd_df <- raw_data[(raw_data$type == 'recovered')&(raw_data$date)=='2020-02-13',]
+confirmed_df <- raw_data[(raw_data$type == 'confirmed')&(raw_data$date)=='2020-02-17',]
+death_df <- raw_data[(raw_data$type == 'death')&(raw_data$date)=='2020-02-17',]
+recoverd_df <- raw_data[(raw_data$type == 'recovered')&(raw_data$date)=='2020-02-17',]
 merged_df <- merge(confirmed_df,death_df,by=c(c("Province.State", "Country.Region","Lat","Long","date"))) %>%
               merge(recoverd_df,by = c("Province.State", "Country.Region","Lat","Long","date"))
               
